@@ -9,21 +9,35 @@
 <body>
 
     <div class="total">
-        <h1>Basketball Requests into Console</h1>
-        All Teams: <button id="getAllTeams">See All Teams</button>
-        <br>
-        <br>
+<div id="gameTodayCheck">Current Games<ul id="gamesToday"></ul></div>
+
+<div>Upcoming Games<ul id="upcomingGames"></ul></div>
+
+
+
+
+       
         Start Date for Game Search
         <input type="date" id="startDateSearch">
         End Date for Game Search
         <input type="date" id="endDateSearch">
         <button id="submitDateSearch">Search By Date</button>
-        <h1>first change</h1>
+        <div>
+            <ul id="searchResults"></ul>
+        </div>
+       
 
 
-    </div>
+    </div><br><br><br><br><br>
+    <h1>Basketball Requests into Console</h1>
+    All Teams: <button id="getAllTeams">See All Teams</button>
+    <br>
+    <br>
 
+    
+    
     <script src="bball.js"></script>
+    
 </body>
 
 </html>

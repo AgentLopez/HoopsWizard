@@ -1,4 +1,115 @@
-// http://basketball-data.surge.sh
+const startDateSearch = document.getElementById("startDateSearch")
+const endDateSearch = document.getElementById("endDateSearch")
+const submitDateSearch = document.getElementById("submitDateSearch")
+const gameTodayCheck = document.getElementById("gameTodayCheck")
+const gamesToday = document.getElementById("gamesToday")
+const upcomingGames = document.getElementById("upcomingGames")
+const searchResults = document.getElementById("searchResults")
+
+
+var d1 = new Date()
+var tomorrow = new Date(d1)
+var nextWeek = new Date(d1)
+tomorrow.setDate(tomorrow.getDate() + 1)
+nextWeek.setDate(nextWeek.getDate() + 7)
+var tday = d1.toISOString().slice(0, -14)
+var tmor = tomorrow.toISOString().slice(0, -14)
+var nwee = nextWeek.toISOString().slice(0, -14)
+
+
+
+// https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tday}
+
+//Checking For Today's Games
+fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tday}`)
+    .then ((response) => {
+        return response.json()
+    })
+    .then ((games) => {
+        console.log(games.data)
+        if(games.data.length == 0) {
+            console.log('No Games Today')
+            gameTodayCheck.innerHTML = `<h2>No Games Today</h2>`
+        }
+        else {
+            displayGames(games.data)
+        }
+        
+    })
+
+//Checking for Upcoming Games
+//https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwee}
+
+fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwee}`)
+    .then ((response) => {
+        return response.json()
+    })
+    .then ((games) => {
+        console.log(games.data)
+        if(games.data.length == 0) {
+            console.log('No Games This Coming Week')
+            upcomingGames.innerHTML = `<h2>No Games In The Next Week</h2>`
+        }
+        else {
+            displayComingGames(games.data)
+        }
+        
+    })
+
+function displayGames(games){
+    let todaygames = games.map(function (tgame) {
+        return `
+        <li class="bullets">${tgame.home_team_score} ${tgame.home_team.name} vs ${tgame.visitor_team.name} ${tgame.visitor_team_score}</li>
+        `
+    })
+    gamesToday.innerHTML = todaygames.join("")
+}
+
+function displayComingGames(games){
+    let comingGames = games.map(function(tgame) {
+        let gdate = tgame.date.slice(5, -14)
+        console.log(gdate)
+        return `
+        <li class="bullets">${gdate} - ${tgame.home_team.name} vs ${tgame.visitor_team.name}</li>
+        `
+    })
+    upcomingGames.innerHTML = comingGames.join("")
+}
+
+function searchGames(games) {
+    let searchGames = games.map(function(tgame) {
+        
+        return `
+        <li class="bullets">${tgame.home_team_score} ${tgame.home_team.name} vs ${tgame.visitor_team.name} ${tgame.visitor_team_score}</li>
+        `
+    })
+    searchResults.innerHTML = searchGames.join("")
+}
+
+
+
+
+submitDateSearch.addEventListener('click', function() {
+    let start = startDateSearch.value
+    let end = endDateSearch.value
+
+    fetch(`https://www.balldontlie.io/api/v1/games?start_date=${start}&end_date=${end}`)
+    .then ((response) => {
+        return response.json()
+    })
+    .then ((games) => {
+        if(games.data.length == 0) {
+            console.log('No Games Found')
+            searchResults.innerHTML = `<h2>No Games Found</h2>`
+        }
+        else {
+            searchGames(games.data)
+        }
+        
+    })
+})
+
+
 
 const getAllTeams = document.getElementById("getAllTeams")
 
@@ -12,20 +123,16 @@ getAllTeams.addEventListener('click', () => {
     })
 })
 
-const startDateSearch = document.getElementById("startDateSearch")
-const endDateSearch = document.getElementById("endDateSearch")
-const submitDateSearch = document.getElementById("submitDateSearch")
-
-submitDateSearch.addEventListener('click', function() {
-    let start = startDateSearch.value
-    let end = endDateSearch.value
-
-    fetch(`https://www.balldontlie.io/api/v1/games?start_date=${start}&end_date=${end}`)
-    .then ((response) => {
-        return response.json()
-    })
-    .then ((games) => {
-        console.log(games.data)
-    })
+fetch("https://api-basketball.p.rapidapi.com/games?season=2020&date=2021-03-10", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "25652fdc58msh59af2b88e720d09p159570jsn7d75445aa7df",
+		"x-rapidapi-host": "api-basketball.p.rapidapi.com"
+	}
 })
-
+.then(response => {
+	console.log(response);
+})
+.catch(err => {
+	console.error(err);
+});
