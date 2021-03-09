@@ -54,13 +54,23 @@ function displayDivisions(divisionsToDisplay) {
     teamsUL.innerHTML = teamDivisions.join("")
 }
 
-function teamProfile(id)
+function teamProfile(id) {
     fetch(`https://www.balldontlie.io/api/v1/players/${id}`, {
         }).then((response) => {
+            console.log(id)
             return response.json()
         }).then((result) => {
+            console.log(result)
+            console.log(result.team.id)
 
-        }
+            let profileItems = `
+                                <div>
+                                    <label>${result.first_name}, ${result.last_name}</label>
+                                    <p>Position: ${result.position}</p>
+                                    <p>Height: ${result.height_feet}'${result.height_inches}</p>
+                                    <p>${result.id}</p>
+                                </div>`
+            profileUL.innerHTML = profileItems
 
         })
-    })
+}
