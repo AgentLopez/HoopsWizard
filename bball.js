@@ -15,6 +15,8 @@ nextWeek.setDate(nextWeek.getDate() + 7)
 var tday = d1.toISOString().slice(0, -14)
 var tmor = tomorrow.toISOString().slice(0, -14)
 var nwee = nextWeek.toISOString().slice(0, -14)
+console.log(tmor)
+console.log(nwee)
 
 
 
@@ -26,7 +28,7 @@ fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tda
         return response.json()
     })
     .then ((games) => {
-        console.log(games.data)
+
         if(games.data.length == 0) {
             console.log('No Games Today')
             gameTodayCheck.innerHTML = `<h2>No Games Today</h2>`
@@ -42,10 +44,12 @@ fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tda
 
 fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwee}`)
     .then ((response) => {
+        console.log(response)
         return response.json()
     })
     .then ((games) => {
         console.log(games.data)
+        console.log(games.data.length)
         if(games.data.length == 0) {
             console.log('No Games This Coming Week')
             upcomingGames.innerHTML = `<h2>No Games In The Next Week</h2>`
@@ -110,7 +114,7 @@ submitDateSearch.addEventListener('click', function() {
 })
 
 
-
+//Get All Teams Button
 const getAllTeams = document.getElementById("getAllTeams")
 
 getAllTeams.addEventListener('click', () => {
@@ -123,16 +127,3 @@ getAllTeams.addEventListener('click', () => {
     })
 })
 
-fetch("https://api-basketball.p.rapidapi.com/games?season=2020&date=2021-03-10", {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "25652fdc58msh59af2b88e720d09p159570jsn7d75445aa7df",
-		"x-rapidapi-host": "api-basketball.p.rapidapi.com"
-	}
-})
-.then(response => {
-	console.log(response);
-})
-.catch(err => {
-	console.error(err);
-});
