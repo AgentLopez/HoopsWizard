@@ -70,7 +70,7 @@ function teamProfile(id) {
                                     <p>Height: ${result.height_feet}'${result.height_inches}</p>
                                     <p>${result.id}</p>
                                 </div>`
-            profileUL.innerHTML = profileItems
+            teamsUL.innerHTML = profileItems
 
         })
 }
