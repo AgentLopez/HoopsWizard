@@ -4,3 +4,7 @@ body {
     text-align: center;
     color: white;
 }
+
+.bullets {
+    list-style-type: none;
+}
