@@ -4,6 +4,10 @@ const teamsUL = document.getElementById("teamsUL")
 const divisionSelect = document.getElementById("divisionSelect")
 
 
+const profileUL = document.getElementById("profileUL")
+
+
+
 fetch('https://www.balldontlie.io/api/v1/teams')
 .then(response => {
     console.log(response)
@@ -42,7 +46,9 @@ function displayDivisions(divisionsToDisplay) {
                    <label><b>${team.full_name}</b></label>
                    <p>Conference: ${team.conference}</p>
                    <p>City: ${team.city}</p>
-                   <button onClick="teamProfile">Profile</button>
+
+                   <button onClick="teamProfile('${team.id}')">Profile</button>
+
                    <button onClick="teamStats">Stats</button>
                    <button onClick="teamSchedule">Schedule</button>
                    
@@ -51,4 +57,39 @@ function displayDivisions(divisionsToDisplay) {
 
     teamsUL.innerHTML = teamDivisions.join("")
 }
+
+
+
+function teamProfile(id) {
+    const filteredPlayers = players.filter(function(player) {
+        return player.team_id == id
+    })
+
+    displayPlayers(filteredPlayers)
+    
+
+}
+function displayPlayers(playersToDisplay) {
+
+    teamsUL.innerHTML = "" // clear out all teams 
+
+    const playerProfiles = playersToDisplay.map(function(player) {
+        return `<li>
+                   <label><b>${player.name}</b></label>
+                   <p># ${player.number}</p>
+                   <p>Position: ${player.pos}</p>
+                   <p>Height: ${player.height}</p>
+                   <p>Exp: ${player.exp}</p>
+                   <p>School: ${player.school}</p>
+                </li>`
+    })
+
+    teamsUL.innerHTML = playerProfiles.join("")
+}
+
+    
+
+
+
+
 
