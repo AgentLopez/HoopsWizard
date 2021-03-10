@@ -28,7 +28,7 @@ fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tda
         return response.json()
     })
     .then ((games) => {
-
+        console.log(games)
         if(games.data.length == 0) {
             console.log('No Games Today')
             gameTodayCheck.innerHTML = `<h2>No Games Today</h2>`
@@ -44,12 +44,9 @@ fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tda
 
 fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwee}`)
     .then ((response) => {
-        console.log(response)
         return response.json()
     })
     .then ((games) => {
-        console.log(games.data)
-        console.log(games.data.length)
         if(games.data.length == 0) {
             console.log('No Games This Coming Week')
             upcomingGames.innerHTML = `<h2>No Games In The Next Week</h2>`
@@ -63,7 +60,7 @@ fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwe
 function displayGames(games){
     let todaygames = games.map(function (tgame) {
         return `
-        <li class="bullets">${tgame.home_team_score} ${tgame.home_team.name} vs ${tgame.visitor_team.name} ${tgame.visitor_team_score}</li>
+        <div class="gameon">${tgame.home_team_score} ${tgame.home_team.name}<br> vs <br>${tgame.visitor_team.name} ${tgame.visitor_team_score}</div>
         `
     })
     gamesToday.innerHTML = todaygames.join("")
@@ -72,7 +69,6 @@ function displayGames(games){
 function displayComingGames(games){
     let comingGames = games.map(function(tgame) {
         let gdate = tgame.date.slice(5, -14)
-        console.log(gdate)
         return `
         <li class="bullets">${gdate} - ${tgame.home_team.name} vs ${tgame.visitor_team.name}</li>
         `
@@ -114,16 +110,16 @@ submitDateSearch.addEventListener('click', function() {
 })
 
 
-//Get All Teams Button
-const getAllTeams = document.getElementById("getAllTeams")
+// //Get All Teams Button
+// const getAllTeams = document.getElementById("getAllTeams")
 
-getAllTeams.addEventListener('click', () => {
-    fetch('https://www.balldontlie.io/api/v1/teams')
-    .then ((response) => {
-        return response.json()
-    })
-    .then ((teams) => {
-        console.log(teams.data)
-    })
-})
+// getAllTeams.addEventListener('click', () => {
+//     fetch('https://www.balldontlie.io/api/v1/teams')
+//     .then ((response) => {
+//         return response.json()
+//     })
+//     .then ((teams) => {
+//         console.log(teams.data)
+//     })
+// })
 
