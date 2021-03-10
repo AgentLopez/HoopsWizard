@@ -3,7 +3,9 @@ const teamsUL = document.getElementById("teamsUL")
 
 const divisionSelect = document.getElementById("divisionSelect")
 
+
 const profileUL = document.getElementById("profileUL")
+
 
 
 fetch('https://www.balldontlie.io/api/v1/teams')
@@ -44,7 +46,9 @@ function displayDivisions(divisionsToDisplay) {
                    <label><b>${team.full_name}</b></label>
                    <p>Conference: ${team.conference}</p>
                    <p>City: ${team.city}</p>
+
                    <button onClick="teamProfile('${team.id}')">Profile</button>
+
                    <button onClick="teamStats">Stats</button>
                    <button onClick="teamSchedule">Schedule</button>
                    
@@ -53,6 +57,7 @@ function displayDivisions(divisionsToDisplay) {
 
     teamsUL.innerHTML = teamDivisions.join("")
 }
+
 
 
 function teamProfile(id) {
@@ -83,6 +88,7 @@ function displayPlayers(playersToDisplay) {
 }
 
     
+
 
 
 
