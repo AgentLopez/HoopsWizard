@@ -23,41 +23,50 @@ console.log(nwee)
 // https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tday}
 
 //Checking For Today's Games
-fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tday}`)
-    .then ((response) => {
+window.addEventListener('load', function () {
+    getCurrentGames()
+    inervalID = window.setInterval(function () {
+        getCurrentGames()
+    }, 120000)
+})
+
+function getCurrentGames() {
+    fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tday}&end_date=${tday}`)
+    .then((response) => {
         return response.json()
     })
-    .then ((games) => {
-        console.log(games)
-        if(games.data.length == 0) {
+    .then((games) => {
+        if (games.data.length == 0) {
             console.log('No Games Today')
             gameTodayCheck.innerHTML = `<h2>No Games Today</h2>`
         }
         else {
             displayGames(games.data)
         }
-        
+
     })
+}
 
 //Checking for Upcoming Games
 //https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwee}
 
-fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${nwee}`)
-    .then ((response) => {
+fetch(`https://www.balldontlie.io/api/v1/games?start_date=${tmor}&end_date=${tmor}`)
+    .then((response) => {
         return response.json()
     })
-    .then ((games) => {
-        if(games.data.length == 0) {
-            console.log('No Games This Coming Week')
-            upcomingGames.innerHTML = `<h2>No Games In The Next Week</h2>`
+    .then((games) => {
+        if (games.data.length == 0) {
+            console.log('No Games Tomorrow')
+            upcomingGames.innerHTML = `<h2>No Games Tomorrow</h2>`
         }
         else {
             displayComingGames(games.data)
         }
-        
+
     })
 
-function displayGames(games){
+function displayGames(games) {
+    gamesToday.innerHTML = ""
     let todaygames = games.map(function (tgame) {
         return `
         <div class="gameon">${tgame.home_team_score} ${tgame.home_team.name}<br> vs <br>${tgame.visitor_team.name} ${tgame.visitor_team_score}</div>
@@ -66,8 +75,8 @@ function displayGames(games){
     gamesToday.innerHTML = todaygames.join("")
 }
 
-function displayComingGames(games){
-    let comingGames = games.map(function(tgame) {
+function displayComingGames(games) {
+    let comingGames = games.map(function (tgame) {
         let gdate = tgame.date.slice(5, -14)
         return `
         <li class="bullets">${gdate} - ${tgame.home_team.name} vs ${tgame.visitor_team.name}</li>
@@ -77,8 +86,8 @@ function displayComingGames(games){
 }
 
 function searchGames(games) {
-    let searchGames = games.map(function(tgame) {
-        
+    let searchGames = games.map(function (tgame) {
+
         return `
         <li class="bullets">${tgame.home_team_score} ${tgame.home_team.name} vs ${tgame.visitor_team.name} ${tgame.visitor_team_score}</li>
         `
@@ -89,24 +98,24 @@ function searchGames(games) {
 
 
 
-submitDateSearch.addEventListener('click', function() {
+submitDateSearch.addEventListener('click', function () {
     let start = startDateSearch.value
     let end = endDateSearch.value
 
     fetch(`https://www.balldontlie.io/api/v1/games?start_date=${start}&end_date=${end}`)
-    .then ((response) => {
-        return response.json()
-    })
-    .then ((games) => {
-        if(games.data.length == 0) {
-            console.log('No Games Found')
-            searchResults.innerHTML = `<h2>No Games Found</h2>`
-        }
-        else {
-            searchGames(games.data)
-        }
-        
-    })
+        .then((response) => {
+            return response.json()
+        })
+        .then((games) => {
+            if (games.data.length == 0) {
+                console.log('No Games Found')
+                searchResults.innerHTML = `<h2>No Games Found</h2>`
+            }
+            else {
+                searchGames(games.data)
+            }
+
+        })
 })
 
 
