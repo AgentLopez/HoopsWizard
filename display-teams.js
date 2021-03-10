@@ -55,37 +55,35 @@ function displayDivisions(divisionsToDisplay) {
 }
 
 
+function teamProfile(id) {
+    const filteredPlayers = players.filter(function(player) {
+        return player.team_id == id
+    })
+
+    displayPlayers(filteredPlayers)
+    
+
+}
+function displayPlayers(playersToDisplay) {
+
+    teamsUL.innerHTML = "" // clear out all teams 
+
+    const playerProfiles = playersToDisplay.map(function(player) {
+        return `<li>
+                   <label><b>${player.name}</b></label>
+                   <p># ${player.number}</p>
+                   <p>Position: ${player.pos}</p>
+                   <p>Height: ${player.height}</p>
+                   <p>Exp: ${player.exp}</p>
+                   <p>School: ${player.school}</p>
+                </li>`
+    })
+
+    teamsUL.innerHTML = playerProfiles.join("")
+}
+
+    
 
 
 
-
-
-
-// function teamProfile(id) {
-//     // fetch(`https://www.balldontlie.io/api/v1/players/`, {
-//     //     }).then((response) => {
-//     //         console.log(id)
-//     //         return response.json()
-//     //     }).then(result => {
-//     //         console.log(result)
-//             let teamPlayers = player_data.filter(function(player) {
-               
-//                 return player.team.id == 14
-//             })
-//           console.log(teamPlayers) 
-//         // })
-//         // .then(teamPlayers => {
-//         //     let profileItems = teamPlayers.map(function(player) { 
-//         //         return      `   <li>
-//         //                         <label>${player.first_name}, ${player.last_name}</label>
-//         //                         <p>Position: ${player.position}</p>
-//         //                         <p>Height: ${player.height_feet}'${player.height_inches}</p>
-                               
-                                
-//         //                         </li>`
-//         //                     })                   
-//         // teamsUL.innerHTML = profileItems.join("")
-//         //                 })
-            
-// }
 
