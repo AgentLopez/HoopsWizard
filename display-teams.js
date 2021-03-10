@@ -54,23 +54,38 @@ function displayDivisions(divisionsToDisplay) {
     teamsUL.innerHTML = teamDivisions.join("")
 }
 
-function teamProfile(id) {
-    fetch(`https://www.balldontlie.io/api/v1/players/${id}`, {
-        }).then((response) => {
-            console.log(id)
-            return response.json()
-        }).then((result) => {
-            console.log(result)
-            console.log(result.team.id)
 
-            let profileItems = `
-                                <div>
-                                    <label>${result.first_name}, ${result.last_name}</label>
-                                    <p>Position: ${result.position}</p>
-                                    <p>Height: ${result.height_feet}'${result.height_inches}</p>
-                                    <p>${result.id}</p>
-                                </div>`
-            teamsUL.innerHTML = profileItems
 
-        })
-}
+
+
+
+
+
+// function teamProfile(id) {
+//     // fetch(`https://www.balldontlie.io/api/v1/players/`, {
+//     //     }).then((response) => {
+//     //         console.log(id)
+//     //         return response.json()
+//     //     }).then(result => {
+//     //         console.log(result)
+//             let teamPlayers = player_data.filter(function(player) {
+               
+//                 return player.team.id == 14
+//             })
+//           console.log(teamPlayers) 
+//         // })
+//         // .then(teamPlayers => {
+//         //     let profileItems = teamPlayers.map(function(player) { 
+//         //         return      `   <li>
+//         //                         <label>${player.first_name}, ${player.last_name}</label>
+//         //                         <p>Position: ${player.position}</p>
+//         //                         <p>Height: ${player.height_feet}'${player.height_inches}</p>
+                               
+                                
+//         //                         </li>`
+//         //                     })                   
+//         // teamsUL.innerHTML = profileItems.join("")
+//         //                 })
+            
+// }
+
