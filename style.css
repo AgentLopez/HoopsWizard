@@ -1,0 +1,44 @@
+.row {
+    grid-row: auto;
+    flex-wrap: wrap;
+    /* height: 400px; */
+    justify-content: space-around;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+       
+body {
+    /* margin: 2%; */
+    padding: 2%;
+    font-family: sans-serif;
+    font-weight: 200;
+    
+}
+.btn-secondary {
+    color: #fff;
+    background-color: #ff715bff !important;
+    border-color: #6c757d;
+}
+
+p {
+    font-family: sans-serif;
+    font-weight: 200;
+    line-height: 75%;
+    font-size: large;
+    
+}
+
+b {
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: x-large;
+}
+
+.bodyButton {
+    width: fit-content;
+}
+
+.teamGrid {
+    padding: 10px;
+    width: 20%;
+}
