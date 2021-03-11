@@ -71,7 +71,7 @@ function displayGames(games) {
     gamesToday.innerHTML = ""
     let todaygames = games.map(function (tgame) {
         return `
-        <div class="gameon">${tgame.home_team_score} ${tgame.home_team.name}<br> vs <br>${tgame.visitor_team.name} ${tgame.visitor_team_score}</div>
+        <div class="teamgrid"><p>${tgame.home_team_score}</p> <b>${tgame.home_team.name}</b><br> vs <br><b>${tgame.visitor_team.name}</b> <p>${tgame.visitor_team_score}</p></div>
         `
     })
     gamesToday.innerHTML = todaygames.join("")
@@ -81,7 +81,7 @@ function displayComingGames(games) {
     let comingGames = games.map(function (tgame) {
         let gdate = tgame.date.slice(5, -14)
         return `
-        <li class="bullets">${tgame.home_team.name} vs ${tgame.visitor_team.name}</li>
+        <li class="bullets"><b>${tgame.home_team.name}</b> vs <b>${tgame.visitor_team.name}</b></li>
         `
     })
     upcomingGames.innerHTML = comingGames.join("")
@@ -100,25 +100,25 @@ function searchGames(games) {
 
 
 
-submitDateSearch.addEventListener('click', function () {
-    let start = startDateSearch.value
-    let end = endDateSearch.value
+// submitDateSearch.addEventListener('click', function () {
+//     let start = startDateSearch.value
+//     let end = endDateSearch.value
 
-    fetch(`https://www.balldontlie.io/api/v1/games?start_date=${start}&end_date=${end}`)
-        .then((response) => {
-            return response.json()
-        })
-        .then((games) => {
-            if (games.data.length == 0) {
-                console.log('No Games Found')
-                searchResults.innerHTML = `<h2>No Games Found</h2>`
-            }
-            else {
-                searchGames(games.data)
-            }
+//     fetch(`https://www.balldontlie.io/api/v1/games?start_date=${start}&end_date=${end}`)
+//         .then((response) => {
+//             return response.json()
+//         })
+//         .then((games) => {
+//             if (games.data.length == 0) {
+//                 console.log('No Games Found')
+//                 searchResults.innerHTML = `<h2>No Games Found</h2>`
+//             }
+//             else {
+//                 searchGames(games.data)
+//             }
 
-        })
-})
+//         })
+// })
 
 
 // //Get All Teams Button
