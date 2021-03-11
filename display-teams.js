@@ -46,9 +46,11 @@ function displayDivisions(divisionsToDisplay) {
 
     const teamDivisions = divisionsToDisplay.map(function(team) {
         return `<div class="teamGrid">
+                    <div class="teamPhoto"><img src="image/${team.id}.gif"></div>
                    <label><b>${team.full_name}</b></label>
                    <p>Conference: ${team.conference}</p>
                    <p>City: ${team.city}</p>
+                  
                 <div class="bodyButton">
                    <button type="button" class="btn btn-outline-success" onClick="teamProfile('${team.id}')">Roster</button>
                    <a type="button" class="btn btn-outline-success" href="https://www.nba.com/schedule" >Schedule</a>
