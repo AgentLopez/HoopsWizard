@@ -9,7 +9,7 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(255, 255, 255) !important">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="index.html">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,15 +31,65 @@
           <br>
        
 
+          <div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <b class='fontcolor'>Tomorrow's Games <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrows-collapse" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
+                      </svg></b>
+                  </button>
+                </h2>
+              </div>
+          
+              <div id="collapseOne" class="collapse collapsed" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <ul id="upcomingGames"></ul>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h2 class="mb-0">
+                    <button class="btn btn-link show" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      <b class='fontcolor'>Current Games <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-arrows-collapse" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 0 1h-13A.5.5 0 0 1 1 8zm7-8a.5.5 0 0 1 .5.5v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 1 1 .708-.708L7.5 4.293V.5A.5.5 0 0 1 8 0zm-.5 11.707l-1.146 1.147a.5.5 0 0 1-.708-.708l2-2a.5.5 0 0 1 .708 0l2 2a.5.5 0 0 1-.708.708L8.5 11.707V15.5a.5.5 0 0 1-1 0v-3.793z"/>
+                      </svg></b>
+                    </button>
+                  </h2>
+                </div>
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body">
+                    
+                    <table class="table">
+                        <thead id="profileHead" class="thead-dark">
+                          <div class="currentGames" id="gameTodayCheck"><div id="gamesToday" class="row"></div></div>
+                    </div>
+                        </thead>
+                        </table>
+                    
 
-          <table class="table">
+                </div>
+                </div>
+              </div>
+
+
+            
+          </div>
+
+
+
+          <!-- <table class="table">
             <thead id="profileHead" class="thead-dark">
-              <div class="row" id="gameTodayCheck">Current Games<div id="gamesToday" class="row"></div></div>
+              <div class="currentGames" id="gameTodayCheck"><b>Current Games</b><div id="gamesToday" class="row"></div></div>
         </div>
             </thead>
-          
+            </table>
+           -->
+            
 
-            <div class="teams">Tomorrow's Games<ul id="upcomingGames"></ul></div>
+            <!-- <div class="teams">Tomorrow's Games</div> -->
 
 </div>
 
