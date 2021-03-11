@@ -6,6 +6,9 @@ const divisionSelect = document.getElementById("divisionSelect")
 
 const profileUL = document.getElementById("profileUL")
 
+const playersRow = document.getElementById("playersRow")
+
+const profileHead = document.getElementById("profileHead")
 
 
 fetch('https://www.balldontlie.io/api/v1/teams')
@@ -42,17 +45,15 @@ function displayDivisions(divisionsToDisplay) {
     teamsUL.innerHTML = "" // clear out all teams
 
     const teamDivisions = divisionsToDisplay.map(function(team) {
-        return `<li>
+        return `<div class="teamGrid">
                    <label><b>${team.full_name}</b></label>
                    <p>Conference: ${team.conference}</p>
                    <p>City: ${team.city}</p>
-
-                   <button onClick="teamProfile('${team.id}')">Profile</button>
-
-                   <button onClick="teamStats">Stats</button>
-                   <button onClick="teamSchedule">Schedule</button>
-                   
-                </li>`
+                <div class="bodyButton">
+                   <button type="button" class="btn btn-outline-success" onClick="teamProfile('${team.id}')">Roster</button>
+                   <a type="button" class="btn btn-outline-success" href="https://www.nba.com/schedule" >Schedule</a>
+                 </div>  
+                </div>`
     })
 
     teamsUL.innerHTML = teamDivisions.join("")
@@ -71,20 +72,37 @@ function teamProfile(id) {
 }
 function displayPlayers(playersToDisplay) {
 
-    teamsUL.innerHTML = "" // clear out all teams 
-
+    profileHead.innerHTML = `
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Pos</th>
+        <th scope="col">Height</th>
+        <th scope="col">Experience</th>
+        <th scope="col">School</th>
+      </tr>
+    
+      
+    ` // clear out all teams 
+    playersRow.innerHTML = ""
     const playerProfiles = playersToDisplay.map(function(player) {
-        return `<li>
-                   <label><b>${player.name}</b></label>
-                   <p># ${player.number}</p>
-                   <p>Position: ${player.pos}</p>
-                   <p>Height: ${player.height}</p>
-                   <p>Exp: ${player.exp}</p>
-                   <p>School: ${player.school}</p>
-                </li>`
+        
+        console.log(player)
+        playersRow.insertAdjacentHTML("beforeend", `
+        <tr>
+        
+        <td>${player.number}</td>
+        <td>${player.name}</td>
+        <td>${player.pos}</td>
+        <td>${player.height}</td>
+        <td>${player.exp}</td>
+        <td>${player.school}</td>
+        
+        </tr> `)
     })
-
-    teamsUL.innerHTML = playerProfiles.join("")
+    // console.log(playerProfiles)
+    // playersRow.insertAdjacentHTML("beforeend", playerProfiles)
+    
 }
 
     
