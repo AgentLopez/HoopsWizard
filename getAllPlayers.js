@@ -3,11 +3,12 @@ const btnPlayers = document.getElementById('btnPlayers')
 const playersUL = document.getElementById('playersUL')
 const playerInfo = document.getElementsByClassName('playerInfo')
 const extraDiv = document.getElementById('extraDiv')
-
+const noStatsDiv = document.getElementById('noStatsDiv')
 
 btnPlayers.addEventListener('click', function () {
   extraDiv.innerHTML = ''
   playersUL.innerHTML = ''
+  noStatsDiv.innerHTML = ''
   playerSearch()
 })
 
@@ -54,8 +55,11 @@ function playerStats(playerId) {
     }).then((statistics) => {
       extraDiv.innerHTML = ''
       console.log(statistics)
-      if(statistics.length > 0) {
+      if(statistics.data.length == 1) {
+        console.log(statistics.length)
+
       let specificStats = statistics.data.map((seasonsAverages) => {
+        
         return `
                 <h2>Current Season Averages</h2>
                 <h4>
@@ -66,13 +70,15 @@ function playerStats(playerId) {
                   reb: ${seasonsAverages.reb}<br>
                   ast: ${seasonsAverages.ast}<br>
                   stl: ${seasonsAverages.stl}
-        
-               </h4>`
+
+               </h4>
+               
+               `
 
       })
       extraDiv.insertAdjacentHTML('beforeend', specificStats)
     } else {
-      extraDiv.innerHTML = 'sorry player is no longer active'
+      noStatsDiv.innerHTML = 'Sorry, player is no longer active'
     }
       // playersUL.insertAdjacentHTML('beforeend', specificStats)
 
