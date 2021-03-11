@@ -21,7 +21,6 @@ function playerSearch() {
     .then((response) => {
       return response.json()
     }).then((playerInfo) => {
-      console.log(playerInfo)
       let specificPlayer = playerInfo.data.map((searchPlayer) => {
         return `<li class="bullets">Name: ${searchPlayer.first_name} ${searchPlayer.last_name}</li>
                 <li class="bullets">Position: ${searchPlayer.position}</li>
@@ -43,21 +42,15 @@ function playerSearch() {
 }
 
 
-
-
-
 function playerStats(playerId) {
   
   let statsURL = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerId}`
-  console.log(statsURL)
   fetch(statsURL)
     .then((response) => {
       return response.json()
     }).then((statistics) => {
       extraDiv.innerHTML = ''
-      console.log(statistics)
       if(statistics.data.length == 1) {
-        console.log(statistics.length)
 
       let specificStats = statistics.data.map((seasonsAverages) => {
         
@@ -87,4 +80,3 @@ function playerStats(playerId) {
     })
 }
 
-console.log(players)
