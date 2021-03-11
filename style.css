@@ -1,44 +1,128 @@
-.row {
-    grid-row: auto;
-    flex-wrap: wrap;
-    /* height: 400px; */
-    justify-content: space-around;
-    padding-top: 3%;
-    padding-bottom: 3%;
-}
-       
-body {
-    /* margin: 2%; */
-    padding: 2%;
-    font-family: sans-serif;
-    font-weight: 200;
+/* CSS Color Scheme
+/* CSS HEX */
+/* --dim-gray: #5F6062ff;
+--bittersweet: #ff715bff;
+--white: #FDFEFFff;
+--green-pantone: #4CAF50ff;
+--rich-black-fogra-39: #101113ff; */ 
+@media (min-width: 576px) {
+    @import "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css";
+      body{
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        
+        
+      }
     
-}
-.btn-secondary {
-    color: #fff;
-    background-color: #ff715bff !important;
-    border-color: #6c757d;
-}
-
-p {
-    font-family: sans-serif;
-    font-weight: 200;
-    line-height: 75%;
-    font-size: large;
+      #btnPlayers {
+        border-color: #ff715bff;
+        color: #ff715bff;
+        width: 12%;
+      
+      }
+      .btn-outline-success:hover {
+        background-color: rgb(95, 96, 98, 0.4) !important;
+      }
     
-}
-
-b {
-    font-family: sans-serif;
-    font-weight: 500;
-    font-size: x-large;
-}
-
-.bodyButton {
-    width: fit-content;
-}
-
-.teamGrid {
-    padding: 10px;
-    width: 20%;
-}
+      .btn-outline-success.focus, .btn-outline-success:focus {
+        
+      }
+    
+      div#extraDiv.card {
+        background-color: rgba(2, 19, 2, 0.103);
+        -webkit-box-shadow: 0 0 3px rgb(56, 51, 51);
+        box-shadow: 0 0 3px rgb(56, 51, 51);
+        text-align-last: center;
+        align-content: center;
+    
+        
+      }
+      .bodyContainer {
+        align-content: center;
+        width: auto;
+      
+      }
+    
+      .bullets {
+        list-style-type: none;
+      }
+      div.bodyContainer {
+        text-align: center;
+    
+      }
+    
+      .card {
+        border: none !important;
+      }
+    
+      #playerSearchTextBox {
+        width: -webkit-fill-available;
+        text-align: center;
+        font-weight: 100;
+        height: 69px;
+        font-size: xx-large;
+      }
+    
+      #playersUL {
+        padding-top: 69px;
+        padding-bottom: 50px;
+        font-weight: 200;
+        font-size: x-large;
+      }
+    
+      .btn {
+        font-weight: 200 !important;
+      }
+      
+      nav {
+        font-family: sans-serif;
+        font-weight: 200;
+        font-size: 24px;
+      }
+    }
+    
+    .row {
+      grid-row: auto;
+      flex-wrap: wrap;
+      /* height: 400px; */
+      justify-content: space-around;
+      padding-top: 3%;
+      padding-bottom: 3%;
+    }
+         
+    body {
+      /* margin: 2%; */
+      padding: 2%;
+      font-family: sans-serif;
+      font-weight: 200;
+      
+    }
+    .btn-secondary {
+      color: #fff;
+      background-color: #ff715bff !important;
+      border-color: #6c757d;
+    }
+    
+    p {
+      font-family: sans-serif;
+      font-weight: 200;
+      line-height: 75%;
+      font-size: large;
+      
+    }
+    
+    b {
+      font-family: sans-serif;
+      font-weight: 500;
+      font-size: x-large;
+    }
+    
+    .bodyButton {
+      width: fit-content;
+    }
+    
+    .teamGrid {
+      padding: 10px;
+      width: 20%;
+    }

@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(255, 255, 255) !important">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: rgb(255, 255, 255) !important;">
             <a class="navbar-brand" href="#">Navbar</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -31,21 +31,33 @@
           <br>
        
 
+        <select name="divisionSelect"  id="divisionSelect" class="btn btn-secondary dropdown-toggle">
+            <option value="0">Choose Division:</option>
+            <option value="All">All</option>
+            <option value="Atlantic">Atlantic</option>
+            <option value="Central">Central</option>
+            <option value="Southeast">Southeast</option>
+            <option value="Northwest">Northwest</option>
+            <option value="Pacific">Pacific</option>
+            <option value="Southwest">Southwest</option>
+        </select>
+        <br>
 
-          <table class="table">
-            <thead id="profileHead" class="thead-dark">
-              <div class="row" id="gameTodayCheck">Current Games<div id="gamesToday" class="row"></div></div>
-        </div>
-            </thead>
-          
+        <div class="row" id="teamsUL"> </div>
 
-            <div class="teams">Tomorrow's Games<ul id="upcomingGames"></ul></div>
-
-</div>
+        <ul id="profileUL">
+            <table class="table">
+                <thead id="profileHead" class="thead-dark">
+                  
+                </thead>
+                <tbody id="playersRow">
+                  
+                </tbody>
+              </table>
+        </ul>
 
         <script src="players-by-team.js"></script>
-        
-        <script src="bball.js"></script>
+        <script src="display-teams.js"></script>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
