@@ -62,7 +62,7 @@ function displayGames(games) {
     let todaygames = games.map(function (tgame) {
         console.log(tgame)
         return `
-        <div class="teamGrid currentGameBox"><img src="image/${tgame.home_team.id}.gif"><p>${tgame.home_team_score}</p> <b>${tgame.home_team.name}</b><br> vs <br><b>${tgame.visitor_team.name}</b> <p>${tgame.visitor_team_score}</p><img src="image/${tgame.visitor_team.id}.gif"></div>
+        <div class="teamGrid currentGameBox"><img src="image/${tgame.home_team.id}.gif" height='90px' width='auto'><br><br><p>${tgame.home_team_score}</p> <b>${tgame.home_team.name}</b><br> vs <br><b>${tgame.visitor_team.name}</b> <p>${tgame.visitor_team_score}</p><br><img src="image/${tgame.visitor_team.id}.gif" height='90px' width='auto'></div>
         `
     })
     gamesToday.innerHTML = todaygames.join("")
