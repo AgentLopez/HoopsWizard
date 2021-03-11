@@ -1,4 +1,4 @@
-// console.log("this is running")
+
 const teamsUL = document.getElementById("teamsUL")
 
 const divisionSelect = document.getElementById("divisionSelect")
@@ -13,22 +13,22 @@ const profileHead = document.getElementById("profileHead")
 
 fetch('https://www.balldontlie.io/api/v1/teams')
 .then(response => {
-    console.log(response)
+   
     return response.json()
 }).then(result => {
-    console.log(result)
+    
     divisionSelect.addEventListener("change", function() {
     // console.log("i run")
         let selectedDivision = this.value
-        console.log(selectedDivision)
+        
         
     
         if (selectedDivision == "All") {
             displayDivisions(result.data)
         } else {
-            console.log(result)
+            
             let filteredData = result.data.filter(function(team) {
-                console.log(team.division)
+                
                 return team.division == selectedDivision
             })
     
@@ -41,7 +41,6 @@ fetch('https://www.balldontlie.io/api/v1/teams')
 
 
 function displayDivisions(divisionsToDisplay) {
-    console.log(divisionsToDisplay)
     teamsUL.innerHTML = "" // clear out all teams
 
     const teamDivisions = divisionsToDisplay.map(function(team) {
@@ -89,7 +88,6 @@ function displayPlayers(playersToDisplay) {
     playersRow.innerHTML = ""
     const playerProfiles = playersToDisplay.map(function(player) {
         
-        console.log(player)
         playersRow.insertAdjacentHTML("beforeend", `
         <tr>
         
@@ -102,9 +100,6 @@ function displayPlayers(playersToDisplay) {
         
         </tr> `)
     })
-    // console.log(playerProfiles)
-    // playersRow.insertAdjacentHTML("beforeend", playerProfiles)
-    
 }
 
     
