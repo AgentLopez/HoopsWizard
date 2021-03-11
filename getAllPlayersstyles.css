@@ -27,7 +27,21 @@
     border-bottom: 1px solid #101113ff;
   
   }
+  #nav-link4 {
+    border-bottom: 1px solid #5F6062ff;
+  }
+  
+  header {
+   direction: rtl;
+   display: flexbox;
+   flex-direction: row-reverse;
+  }
+  #loginBtn {
+    display:table-header-group;
+    justify-content: right;
+    width: 45%;
 
+  }
   }
   #btnPlayers {
     border-color: #ff715bff;
@@ -44,7 +58,7 @@
   }
 
   div#extraDiv.card {
-    background-color: rgba(2, 19, 2, 0.103);
+    background-color: rgba(134, 42, 14, 0.034);
     -webkit-box-shadow: 0 0 3px rgb(56, 51, 51);
     box-shadow: 0 0 3px rgb(56, 51, 51);
     text-align-last: center;
