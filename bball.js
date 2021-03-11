@@ -7,16 +7,18 @@ const upcomingGames = document.getElementById("upcomingGames")
 const searchResults = document.getElementById("searchResults")
 
 
-var d1 = new Date()
+var d1 = new Date().toLocaleString()
+console.log(d1)
 var tomorrow = new Date(d1)
 var nextWeek = new Date(d1)
 tomorrow.setDate(tomorrow.getDate() + 1)
 nextWeek.setDate(nextWeek.getDate() + 7)
-var tday = d1.toISOString().slice(0, -14)
-var tmor = tomorrow.toISOString().slice(0, -14)
-var nwee = nextWeek.toISOString().slice(0, -14)
+var tday = d1.slice(0, -12)
+var tmor = tomorrow.toLocaleString().slice(0, -12)
+var nwee = nextWeek.toLocaleString().slice(0, -12)
 console.log(tmor)
 console.log(nwee)
+console.log(tday)
 
 
 
@@ -79,7 +81,7 @@ function displayComingGames(games) {
     let comingGames = games.map(function (tgame) {
         let gdate = tgame.date.slice(5, -14)
         return `
-        <li class="bullets">${gdate} - ${tgame.home_team.name} vs ${tgame.visitor_team.name}</li>
+        <li class="bullets">${tgame.home_team.name} vs ${tgame.visitor_team.name}</li>
         `
     })
     upcomingGames.innerHTML = comingGames.join("")
