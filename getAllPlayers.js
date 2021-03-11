@@ -43,9 +43,6 @@ function playerSearch() {
 }
 
 
-
-
-
 function playerStats(playerId) {
   
   let statsURL = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerId}`
@@ -62,8 +59,8 @@ function playerStats(playerId) {
       let specificStats = statistics.data.map((seasonsAverages) => {
         
         return `
-                <h2>Current Season Averages</h2>
-                <h4>
+                <h2 style="font-weight: 300">Current Season Averages</h2>
+                <h4 style="font-weight: 200">
                   mpg: ${seasonsAverages.min}<br>
                   pts: ${seasonsAverages.pts}<br>
                   fg%: ${seasonsAverages.fg_pct}<br>
