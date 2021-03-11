@@ -14,7 +14,21 @@
     
     
   }
+  #nav-link1 {
+    border-bottom: 1px solid #4caf50ff;
+   
+   
+  }
+  #nav-link2 {
+    border-bottom: 1px solid #ff715bff;
+    
+  }
+  #nav-link3 {
+    border-bottom: 1px solid #101113ff;
+  
+  }
 
+  }
   #btnPlayers {
     border-color: #ff715bff;
     color: #ff715bff;
@@ -84,7 +98,7 @@
   #noStatsHeader {
     font-family: sans-serif;
     font-weight: 200;
-    
+
   }
 }
 
