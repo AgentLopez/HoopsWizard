@@ -3,7 +3,8 @@ const btnPlayers = document.getElementById('btnPlayers')
 const playersUL = document.getElementById('playersUL')
 const playerInfo = document.getElementsByClassName('playerInfo')
 const extraDiv = document.getElementById('extraDiv')
-const noStatsDiv = document.getElementById('noStatsDiv')
+let noStatsDiv = document.getElementById('noStatsDiv')
+const modalBody = document.getElementsByClassName('modal-body')
 
 btnPlayers.addEventListener('click', function () {
   extraDiv.innerHTML = ''
@@ -27,8 +28,8 @@ function playerSearch() {
                 <li class="bullets">Team: ${searchPlayer.team.abbreviation}</li>
                 <li class="bullets">Height: ${searchPlayer.height_feet}'${searchPlayer.height_inches}"</li>
                 <li class="bullets">Weight: ${searchPlayer.weight_pounds} lbs</li>
-                <button type="button" class="btn btn-outline-success" id='playerSeasonStats' onclick='playerStats(${searchPlayer.id})'>Get Season Stats!</button>
-
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#exampleModalCenter" id='playerSeasonStats' onclick='playerStats(${searchPlayer.id})'>Get Season Stats!</button>
+                
                </li>
                <div class='playerInfo'></div>
                `
@@ -78,9 +79,10 @@ function playerStats(playerId) {
       })
       extraDiv.insertAdjacentHTML('beforeend', specificStats)
     } else {
-      noStatsDiv.innerHTML = 'Sorry, player is no longer active'
+      extraDiv.innerHTML = `<h3 style="font-weight: 200">Sorry, player is no longer active.</h3>`
+      
     }
-      // playersUL.insertAdjacentHTML('beforeend', specificStats)
+  
 
     })
 }
