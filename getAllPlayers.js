@@ -21,17 +21,17 @@ function playerSearch() {
     }).then((playerInfo) => {
       console.log(playerInfo)
       let specificPlayer = playerInfo.data.map((searchPlayer) => {
-        return `<li>Name: ${searchPlayer.first_name} ${searchPlayer.last_name}</li>
-                <li>Position: ${searchPlayer.position}</li>
-                <li>Team: ${searchPlayer.team.abbreviation}</li>
-                <li>Height: ${searchPlayer.height_feet}'${searchPlayer.height_inches}"</li>
-                <li>Weight: ${searchPlayer.weight_pounds} lbs</li>
+        return `<li class="bullets">Name: ${searchPlayer.first_name} ${searchPlayer.last_name}</li>
+                <li class="bullets">Position: ${searchPlayer.position}</li>
+                <li class="bullets">Team: ${searchPlayer.team.abbreviation}</li>
+                <li class="bullets">Height: ${searchPlayer.height_feet}'${searchPlayer.height_inches}"</li>
+                <li class="bullets">Weight: ${searchPlayer.weight_pounds} lbs</li>
                 <button type="button" class="btn btn-outline-success" id='playerSeasonStats' onclick='playerStats(${searchPlayer.id})'>Get Season Stats!</button>
 
                </li>
                <div class='playerInfo'></div>
                `
-
+        
 
       })
       
@@ -54,6 +54,7 @@ function playerStats(playerId) {
     }).then((statistics) => {
       extraDiv.innerHTML = ''
       console.log(statistics)
+      if(statistics.length > 0) {
       let specificStats = statistics.data.map((seasonsAverages) => {
         return `
                 <h2>Current Season Averages</h2>
@@ -70,7 +71,12 @@ function playerStats(playerId) {
 
       })
       extraDiv.insertAdjacentHTML('beforeend', specificStats)
+    } else {
+      extraDiv.innerHTML = 'sorry player is no longer active'
+    }
       // playersUL.insertAdjacentHTML('beforeend', specificStats)
 
     })
 }
+
+console.log(players)
