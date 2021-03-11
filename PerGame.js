@@ -32,8 +32,12 @@ function displayGames(games) {
         return `<li>
                     <b>${data.id}</b>
                     <p>${data.date}</p>
+                    <p>${data.home_team.full_name}</p>
                     <p>${data.home_team_score}</p>
-                    <p>${data.season}</p>
+                    <p>${data.home_team.division}  ${data.home_team.conference}</p>
+                    <p>${data.visitor_team.full_name}</p>
+                    <p>${data.visitor_team_score}</p>
+                    <p>${data.visitor_team.division} ${data.visitor_team.conference}</p>
                 </li>
         `
     })
