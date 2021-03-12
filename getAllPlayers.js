@@ -80,3 +80,11 @@ function playerStats(playerId) {
     })
 }
 
+function headshot(playerSearch) {
+  fetch(` https://nba-players.herokuapp.com/players/${searchPlayer.last_name}/${searchPlayer.last_name}`)
+  .then((response) => {
+    return response.json()
+  }).then((headshot) => {
+    
+  })
+}
